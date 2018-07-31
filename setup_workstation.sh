@@ -31,6 +31,16 @@ check_dependencies() {
     echo "homebrew not installed. please install homebrew."
     exit 1
   fi
+
+  if [[ -z "$GIT_NAME" ]]; then
+    echo "GIT_NAME environment variable must be set to setup git config."
+    exit 1
+  fi
+
+  if [[ -z "$GIT_EMAIL" ]]; then
+    echo "GIT_EMAIL environment variable must be set to setup git config."
+    exit 1
+  fi
 }
 
 install_things() {
@@ -55,6 +65,8 @@ setup_go() {
 }
 
 setup_gitconfig() {
+  git config --global user.name \""$GIT_NAME"\"
+  git config --global user.email "$GIT_EMAIL"
   git config --global --replace-all alias.st status
   git config --global --replace-all alias.co checkout
   git config --global --replace-all alias.flog "log --pretty=fuller --decorate"
