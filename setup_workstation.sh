@@ -82,6 +82,17 @@ setup_bash() {
   bash-it enable plugin git
 }
 
+keys() {
+  if ! grep loadkey ~/.bash_profile; then
+  echo 'loadkey() {
+  echo "$(lpass show github-ssh-key --notes)" > ~/.ssh/id_rsa && \
+  chmod 600 ~/.ssh/id_rsa && \
+  ssh-add -t 8h ~/.ssh/id_rsa && \
+  rm ~/.ssh/id_rsa
+}' >> ~/.bash_profile
+  fi
+}
+
 main() {
   check_dependencies
   install_things
@@ -89,6 +100,7 @@ main() {
   setup_go
   setup_gitconfig
   setup_vim
+  keys
 }
 
 main "$@"
