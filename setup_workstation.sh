@@ -21,6 +21,7 @@ THINGS=(
   neovim
   python
   ruby-build
+  sublime-text
   the_silver_searcher
   watch
   wget
