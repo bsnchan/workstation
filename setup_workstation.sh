@@ -17,6 +17,7 @@ THINGS=(
   git
   go
   jq
+  kubernetes-cli
   lastpass-cli
   neovim
   python
