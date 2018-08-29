@@ -13,6 +13,7 @@ CASKS=(
 
 THINGS=(
   autojump
+  bosh-cli
   chruby
   git
   go
@@ -43,6 +44,8 @@ check_dependencies() {
     echo "GIT_EMAIL environment variable must be set to setup git config."
     exit 1
   fi
+
+  brew tap cloudfoundry/tap
 }
 
 install_things() {
